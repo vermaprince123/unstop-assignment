@@ -1,0 +1,23 @@
+.social-login-button{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border: rgb(194, 193, 193) solid 0.5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 -1px 4px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px 0 5px 0;
+}
+
+.social-login-button:hover{
+    background-color: rgb(222, 232, 236);
+}
+
+.social-login-button-text{
+    padding-left: 5px;
+    cursor: pointer;
+}

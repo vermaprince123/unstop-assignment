@@ -1,0 +1,46 @@
+.login-form-container{
+    width: 50%;
+    height: 80%;
+    padding: 40px;
+    border: solid red 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form{
+    width: 100%;
+    height: 100%;
+}
+
+.form-heading{
+    width: 30%;
+    height: 30%;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.form-unstop-heading{
+    font-weight: 900;
+    color: blueviolet;
+}
+
+.login-form-or-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    margin: 10px;
+}
+
+.or-option-text{
+    width: max-content;
+    height: max-content;
+    position: relative;
+    bottom: 18px;
+    background: white;
+    padding: 5px;
+}

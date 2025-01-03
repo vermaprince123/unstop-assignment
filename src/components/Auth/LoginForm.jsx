@@ -8,8 +8,14 @@ import {
   getPasswordValidation,
 } from '../../utils/validation';
 import { redirect } from 'react-router-dom';
+import GoogleIcon from '../../assets/icons/googleIcon';
+import FacebookIcon from '../../assets/icons/facebookIcon';
+import UserIcon from '../../assets/icons/userIcon';
+import KeyIcon from '../../assets/icons/keyIcon';
+import MailIcon from '../../assets/icons/mailIcon';
+import { SocialLoginButton } from '../Shared/SocialLoginButton';
 
-const LoginForm = ({user, login}) => {
+const LoginForm = ({ user, login }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,10 +48,10 @@ const LoginForm = ({user, login}) => {
     );
 
     if (usernameIsValid && emailIsValid && passwordIsValid) {
-        setIsLoading(true);
+      setIsLoading(true);
       try {
-        const loggedIn = await login({username, email, password});
-        if(loggedIn) redirect("/home");
+        const loggedIn = await login({ username, email, password });
+        if (loggedIn) redirect("/home");
 
         console.log(username, email, password);
       } catch (error) {
@@ -62,38 +68,46 @@ const LoginForm = ({user, login}) => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="login-form">
-      <InputField
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => validateAndSetState(e.target.value, setUsername, setUsernameError, getUsernameValidation)}
-        errorMessage={usernameError}
-        icon={<i className="fa fa-user"></i>}
-      />
-      <InputField
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => validateAndSetState(e.target.value, setEmail, setEmailError, getEmailValidation)}
-        errorMessage={emailError}
-        icon={<i className="fa fa-envelope"></i>}
-      />
-      <InputField
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => validateAndSetState(e.target.value, setPassword, setPasswordError, getPasswordValidation)}
-        errorMessage={passwordError}
-        icon={<i className="fa fa-lock"></i>}
-      />
-      <button
-        type="submit"
-        disabled={usernameError || emailError || passwordError}
-      >
-        Login
-      </button>
-    </form>
+    <div className="login-form-container">
+      <div className="form-heading">Welcome to <span className="form-unstop-heading">Unstop</span></div>
+      <SocialLoginButton socialMediaName="Google" SocialIcon={<GoogleIcon />}/>
+      <SocialLoginButton socialMediaName="Facebook" SocialIcon={<FacebookIcon />}/>
+      <div className="login-form-or-line">
+        <div className="or-option-text">OR</div>
+      </div>
+      <form onSubmit={handleLogin} className="login-form">
+        <InputField
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => validateAndSetState(e.target.value, setUsername, setUsernameError, getUsernameValidation)}
+          errorMessage={usernameError}
+          icon={<UserIcon />}
+        />
+        <InputField
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => validateAndSetState(e.target.value, setEmail, setEmailError, getEmailValidation)}
+          errorMessage={emailError}
+          icon={<MailIcon />}
+        />
+        <InputField
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => validateAndSetState(e.target.value, setPassword, setPasswordError, getPasswordValidation)}
+          errorMessage={passwordError}
+          icon={<KeyIcon />}
+        />
+        <button
+          type="submit"
+          disabled={usernameError || emailError || passwordError}
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 
